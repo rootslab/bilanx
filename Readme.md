@@ -78,8 +78,6 @@ Bilanx.status : {
     }
     // it holds special AUTH command
     , auth : []
-    // it holds special SELECT command
-    , select : []
 }
 ```
 
@@ -99,18 +97,6 @@ Bilanx.status : {
  * NOTE: only Syllabus AUTH command will be accepted and stored.
  */
 Bilanx#auth( Object syllabus_auth_command ) : Object
-
-/*
- * Update the current select status property. In this way the SELECT command
- * has priority over the other commands in the queue (after AUTH); when #pop()
- * will be called, it will return this command regardless if the command queue
- * is empty or not.
- *
- * It returns the current select status property ( encoded SELECT command ).
- *
- * NOTE: only Syllabus SELECT command will be accepted and stored.
- */
-Bilanx#select( Object syllabus_select_command ) : Object
 
 /*
  * Update internal subscription status ( using a un/subscription reply ), passing the command and
