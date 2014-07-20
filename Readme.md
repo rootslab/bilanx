@@ -7,7 +7,7 @@
 
 [![NPM](https://nodei.co/npm-dl/bilanx.png)](https://nodei.co/npm/bilanx/)
 
-> _**β Bilanx**_, a module to handle bindings between commands and __Redis__ replies for __Deuces__ ( a minimal Redis client ). It uses an __automatic rollback mechanism__ for subscriptions, when the connection is lost. It is heavily based on __[Train](https://github.com/rootslab/train)__ module, a __well-tested__ and fast __FIFO__ queue.
+> _**β Bilanx**_, a module to handle bindings between commands and __Redis__ replies for __[Deuces](https://github.com/rootslab/deuces)__ ( a minimal Redis client ). It uses an __automatic rollback mechanism__ for subscriptions, when the connection is lost. It is heavily based on __[Train](https://github.com/rootslab/train)__ module, a __well-tested__ and fast __FIFO__ queue.
  
 ###Install
 
