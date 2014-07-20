@@ -1,0 +1,44 @@
+{
+  "name": "bilanx",
+  "version": "0.1.0",
+  "description": "β Bilanx, a simplified command queue for Deuces, a minimal Redis client.",
+  "homepage": "https://github.com/rootslab/bilanx",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/rootslab/bilanx.git"
+  },
+  "keywords": [
+    "β",
+    "bilanx",
+    "deuces",
+    "redis",
+    "Redis",
+    "command queue",
+    "queue"
+  ],
+  "author": {
+    "name": "Guglielmo Ferri",
+    "email": "44gatti@gmail.com"
+  },
+  "dependencies": {
+    "train" : ">=3.3.2",
+    "bolgia" : ">=2.6.1"
+  },
+  "devDependencies": {
+    "syllabus" : ">=0.31.7"
+    },
+  "main": "index",
+  "engines": {
+    "node": ">=0.8.x"
+  },
+  "scripts": {
+    "test": "bash test/run.sh"
+    , "bench": "bash bench/run.sh"
+  },
+  "license": "MIT",
+  "readmeFilename": "Readme.md",
+  "bugs": {
+    "url": "https://github.com/rootslab/bilanx/issues"
+  }
+}
