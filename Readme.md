@@ -1,19 +1,19 @@
 ###β Bilanx
 
 [![LICENSE](http://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/rootslab/bilanx#mit-license)
-
-[![NPM VERSION](http://img.shields.io/npm/v/bilanx.svg)](https://www.npmjs.org/package/bilanx)
-[![TRAVIS CI BUILD](http://img.shields.io/travis/rootslab/bilanx.svg)](http://travis-ci.org/rootslab/bilanx)
-[![BUILD STATUS](http://img.shields.io/david/rootslab/bilanx.svg)](https://david-dm.org/rootslab/bilanx)
-
-[![NPM GRAPH1](https://nodei.co/npm-dl/bilanx.png)](https://nodei.co/npm/bilanx/)
-
 [![GITHUB tag](http://img.shields.io/github/tag/rootslab/bilanx.svg)](https://github.com/rootslab/bilanx/tags)
 [![ISSUES](http://img.shields.io/github/issues/rootslab/bilanx.svg)](https://github.com/rootslab/bilanx/issues)
 [![GITTIP](http://img.shields.io/gittip/rootslab.svg)](https://www.gittip.com/rootslab/)
 [![NPM DOWNLOADS](http://img.shields.io/npm/dm/bilanx.svg)](http://npm-stat.com/charts.html?package=bilanx)
 
-[![NPM GRAPH2](https://nodei.co/npm/bilanx.png?downloads=true&stars=true)](https://nodei.co/npm/bilanx/)
+[![NPM VERSION](http://img.shields.io/npm/v/bilanx.svg)](https://www.npmjs.org/package/bilanx)
+[![TRAVIS CI BUILD](http://img.shields.io/travis/rootslab/bilanx.svg)](http://travis-ci.org/rootslab/bilanx)
+[![BUILD STATUS](http://img.shields.io/david/rootslab/bilanx.svg)](https://david-dm.org/rootslab/bilanx)
+[![DEVDEPENDENCY STATUS](http://img.shields.io/david/dev/rootslab/bilanx.svg)](https://david-dm.org/rootslab/bilanx#info=devDependencies)
+
+[![NPM GRAPH1](https://nodei.co/npm-dl/bilanx.png)](https://nodei.co/npm/bilanx/)
+
+[![NPM GRAPH2](h.co/npm/bilanx.png?downloads=true&stars=true)](https://nodei.co/npm/bilanx/)
 
 > _**β Bilanx**_, a __fast and simplified__ command queue for 🂢 __[Deuces](https://github.com/rootslab/deuces)__, a __minimal Redis client__. It is __custom version__ of the  __[♎ Libra](https://github.com/rootslab/libra)__ module, it handles only some commands, primarily pubsub ones and monitor.
 > It uses an __automatic rollback mechanism__ for subscriptions, when the connection is lost.
@@ -81,6 +81,7 @@ Bilanx.status : {
         on : 0
         , active : 0
         , channels : 0
+        , patterns : 0
     }
     , monitoring : {
         on : 0
