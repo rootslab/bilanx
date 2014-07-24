@@ -1,6 +1,6 @@
 {
   "name": "bilanx",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "β Bilanx, a fast and simplified command queue for Deuces, a minimal Redis client.",
   "homepage": "https://github.com/rootslab/bilanx",
   "private": false,

@@ -17,16 +17,11 @@ var log = console.log
             , channels : 0
             , pchannels : 0
         }
-        , transaction : {
-            on : 0
-            , active : 0
-        }
         , monitoring : {
             on : 0
             , active : 0
         }
         , auth : 0
-        , select : 0
     }
     ;
 
@@ -40,16 +35,11 @@ l.status = {
         , channels : 1
         , pchannels : 1
     }
-    , transaction : {
-        on : 1
-        , active : 1
-    }
     , monitoring : {
         on : 1
         , active : 1
     }
     , auth : 1
-    , select : 1
 };
 
 log( '- Bilanx#flush.' );
