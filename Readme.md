@@ -57,12 +57,25 @@ $ npm run bench
 
 ###Constructor
 
-> Create an instance.
+> Create an instance, argument within [ ] is optional.
 
 ```javascript
-var l = Bilanx()
+var l = Bilanx( [ opt ] )
 // or
-var l = new Bilanx()
+var l = new Bilanx( [ opt ] )
+```
+
+####Options
+
+> Default options are listed.
+
+```javascript
+opt = {
+    // rollback queue max size
+    rollback : 64 * 1024
+    // log last access time for queue head
+    , timestamps : false
+}
 ```
 
 ### Properties
@@ -80,10 +93,12 @@ Bilanx.status : {
         , active : 0
         , channels : 0
         , patterns : 0
+        , last_update : -1
     }
     , monitoring : {
         on : 0
         , active : 0
+        , last_update : -1
     }
     // it holds special AUTH command
     , auth : []
