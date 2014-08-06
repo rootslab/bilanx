@@ -14,7 +14,7 @@
 [![NPM GRAPH2](https://nodei.co/npm/bilanx.png?downloads=true&stars=true)](https://nodei.co/npm/bilanx/)
 
 > _**β Bilanx**_, a __fast and simplified__ command queue for 🂢 __[Deuces](https://github.com/rootslab/bilanx)__, a __minimal Redis client__. It is __custom version__ of the  __[♎ Libra](https://github.com/rootslab/libra)__ module, it handles only some commands, primarily pubsub ones and monitor.
-> It uses an __automatic rollback mechanism__ for subscriptions, when the connection is lost.
+> It implements an __automatic rollback mechanism__ for subscriptions, when the connection is lost.
 > It is heavily based on __[Train](https://github.com/rootslab/train)__ module, a __well-tested__ and fast __FIFO__ queue.
 
 ###Install
