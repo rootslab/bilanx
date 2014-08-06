@@ -73,7 +73,7 @@ var l = new Bilanx( [ opt ] )
 opt = {
     // rollback queue max size
     rollback : 64 * 1024
-    // log last access time for queue head
+    // log the last access time to the queue's head
     , timestamps : false
 }
 ```
