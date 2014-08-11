@@ -1,61 +1,69 @@
+#!/usr/bin/env node
+
 /* 
  * Bilanx #head method
  */
 
-var log = console.log
-    , emptyFn = function () {}
-    , assert = require( 'assert' )
-    , util = require( 'util' )
-    , Bilanx = require( '../' )
-    , Syllabus = require( 'syllabus' )
-    , l = Bilanx()
-    , syl = Syllabus()
-    , auth = syl.commands.auth
-    , ping = syl.commands.ping
-    , acmd = auth( 'foobared', emptyFn )
-    , pcmd = ping()
-    , h = null
-    , p = null
-    ;
+exports.test = function ( done ) {
 
-log( '- push dummy PING command to the queue.' );
-l.push( pcmd );
+    var log = console.log
+        , emptyFn = function () {}
+        , assert = require( 'assert' )
+        , util = require( 'util' )
+        , Bilanx = require( '../' )
+        , Syllabus = require( 'syllabus' )
+        , l = Bilanx()
+        , syl = Syllabus()
+        , auth = syl.commands.auth
+        , ping = syl.commands.ping
+        , acmd = auth( 'foobared', emptyFn )
+        , pcmd = ping()
+        , h = null
+        , p = null
+        , exit = typeof done === 'function' ? done : function () {}
+        ;
 
-h = l.head();
-p = l.pop();
+    log( '- push dummy PING command to the queue.' );
+    l.push( pcmd );
 
-log( '- now compare #pop and #head result, should be the same command:', util.inspect( p, false, 3 , true )  );
-assert.ok( h === p, 'got: ' + util.inspect( h, false, 3 , true ) );
+    h = l.head();
+    p = l.pop();
 
-log( '- re-push dummy PING command to the queue.' );
-l.push( pcmd );
+    log( '- now compare #pop and #head result, should be the same command:', util.inspect( p, false, 3 , true )  );
+    assert.ok( h === p, 'got: ' + util.inspect( h, false, 3 , true ) );
 
-log( '- call #auth to push AUTH command into the queue.' );
-l.auth( acmd );
+    log( '- re-push dummy PING command to the queue.' );
+    l.push( pcmd );
 
-log( '- check if status.auth  property was correctly updated.' );
-assert.ok( l.status.auth[ 0 ] === acmd );
+    log( '- call #auth to push AUTH command into the queue.' );
+    l.auth( acmd );
 
-h = l.head();
-p = l.pop();
+    log( '- check if status.auth  property was correctly updated.' );
+    assert.ok( l.status.auth[ 0 ] === acmd );
 
-log( '- now compare #pop and #head result, should be the same command (not PING):', util.inspect( p, false, 3 , true )  );
-assert.ok( h === p, 'got: ' + util.inspect( h, false, 3 , true ) );
+    h = l.head();
+    p = l.pop();
 
-log( '- now Bilanx.status.auth should be resetted to 0.' );
-assert.deepEqual( l.status.auth, [] );
+    log( '- now compare #pop and #head result, should be the same command (not PING):', util.inspect( p, false, 3 , true )  );
+    assert.ok( h === p, 'got: ' + util.inspect( h, false, 3 , true ) );
+
+    log( '- now Bilanx.status.auth should be resetted to 0.' );
+    assert.deepEqual( l.status.auth, [] );
 
 
-h = l.head();
-p = l.pop();
+    h = l.head();
+    p = l.pop();
 
-log( '- now compare #pop and #head result, should be the same command (not PING):', util.inspect( p, false, 3 , true )  );
-assert.ok( h === p, 'got: ' + util.inspect( h, false, 3 , true ) );
+    log( '- now compare #pop and #head result, should be the same command (not PING):', util.inspect( p, false, 3 , true )  );
+    assert.ok( h === p, 'got: ' + util.inspect( h, false, 3 , true ) );
 
-log( '- now #pop PING command from the queue.' );
+    log( '- now #pop PING command from the queue.' );
 
-h = l.head();
-p = l.pop();
+    h = l.head();
+    p = l.pop();
 
-log( '- now compare #pop and #head result, should be the same command (PING):', util.inspect( p, false, 3 , true )  );
-assert.ok( h === p, 'got: ' + util.inspect( h, false, 3 , true ) );
+    log( '- now compare #pop and #head result, should be the same command (PING):', util.inspect( p, false, 3 , true )  );
+    assert.ok( h === p, 'got: ' + util.inspect( h, false, 3 , true ) );
+
+    exit();
+};

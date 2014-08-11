@@ -4,53 +4,59 @@
  * Bilanx rollback test in subscription mode
  */
 
-var log = console.log
-    , assert = require( 'assert' )
-    , util = require( 'util' )
-    , Bilanx = require( '../' )
-    , l = Bilanx()
-    , Syllabus = require( 'syllabus' )
-    , syl = Syllabus()
-    , commands = syl.commands
-    , channels = [ 'channel-a', 'channel-b', 'channel-c' ]
-    // un/subscription commands
-    , sub1 = commands.subscribe( channels.slice( 0, 1 ) )
-    , sub2 = commands.subscribe( channels.slice( 0, 1 ) )
-    , unsub = commands.unsubscribe()
-    // callback that receives an Error
-    , cback = function ( err, data ) {
-        assert.ifError( ! err );
-    }
-    , quit = commands.quit()
-    // expected result
-    , result = []
-    ;
+exports.test = function ( done ) {
 
-log( '- test Bilanx rollback mechanism in subscription mode.' );
+    var log = console.log
+        , assert = require( 'assert' )
+        , util = require( 'util' )
+        , Bilanx = require( '../' )
+        , l = Bilanx()
+        , Syllabus = require( 'syllabus' )
+        , syl = Syllabus()
+        , commands = syl.commands
+        , channels = [ 'channel-a', 'channel-b', 'channel-c' ]
+        // un/subscription commands
+        , sub1 = commands.subscribe( channels.slice( 0, 1 ) )
+        , sub2 = commands.subscribe( channels.slice( 0, 1 ) )
+        , unsub = commands.unsubscribe()
+        // callback that receives an Error
+        , cback = function ( err, data ) {
+            assert.ifError( ! err );
+        }
+        , quit = commands.quit()
+        // expected result
+        , result = []
+        , exit = typeof done === 'function' ? done : function () {}
+        ;
 
-log( '- Bilanx#push( SUBSCRIBE ' + channels.slice( 0, 1 ) + ' ).' );
-l.push( sub1 );
-result.push( sub1 );
-assert.equal( l.cqueue.get( 0 ).isSubscription, true );
+    log( '- test Bilanx rollback mechanism in subscription mode.' );
 
-log( '- Bilanx#push( SUBSCRIBE ' + channels.slice( 1 ) + ' ).' );
-l.push( sub2 );
-result.push( sub2 );
-assert.equal( l.cqueue.get( 0 ).isSubscription, true );
+    log( '- Bilanx#push( SUBSCRIBE ' + channels.slice( 0, 1 ) + ' ).' );
+    l.push( sub1 );
+    result.push( sub1 );
+    assert.equal( l.cqueue.get( 0 ).isSubscription, true );
 
-log( '- mix Bilanx#pop and #push calls.' );
-l.pop();
-l.push( sub1 );
-result.push( sub1 );
-l.pop();
-l.push( sub2 );
-result.push( sub2 );
-l.pop();
-l.pop();
+    log( '- Bilanx#push( SUBSCRIBE ' + channels.slice( 1 ) + ' ).' );
+    l.push( sub2 );
+    result.push( sub2 );
+    assert.equal( l.cqueue.get( 0 ).isSubscription, true );
 
-log( '- now #rollBack(true) commands ( re-enable rollUp after operation).' );
-l.rollBack( true );
-assert.equal( l.cqueue.roll, true );
+    log( '- mix Bilanx#pop and #push calls.' );
+    l.pop();
+    l.push( sub1 );
+    result.push( sub1 );
+    l.pop();
+    l.push( sub2 );
+    result.push( sub2 );
+    l.pop();
+    l.pop();
 
-log( '- now deep check queue, if rollback was successful.' );
-assert.deepEqual( l.cqueue.qhead, result );
+    log( '- now #rollBack(true) commands ( re-enable rollUp after operation).' );
+    l.rollBack( true );
+    assert.equal( l.cqueue.roll, true );
+
+    log( '- now deep check queue, if rollback was successful.' );
+    assert.deepEqual( l.cqueue.qhead, result );
+
+    exit();
+};
